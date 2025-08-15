@@ -101,7 +101,7 @@ sudo chown -R ec2-user:ec2-user /opt/Student-portal-backend
 **Edit database configuration:**
 Open the application properties file:
 ```
-sudo vi /opt/Student-portal-backend/src/main/resources/application.properties
+sudo vi /opt/Student-portal-backend/Student-portal-backend/src/main/resources/application.properties
 ```
 Update the following lines with your database details:
 ```
@@ -118,7 +118,7 @@ Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL se
 
 Navigate to the project directory. To ensure a clean build, delete the old `target` directory (if it exists) and then build the package:
 ```
-cd /opt/Student-portal-backend/
+cd /opt/Student-portal-backend/Student-portal-backend/
 rm -rf target
 mvn clean install
 ```

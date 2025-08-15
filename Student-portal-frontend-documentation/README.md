@@ -53,14 +53,10 @@ If you see version numbers, Node.js and npm are already installed. If not, follo
 - Run the downloaded installer and follow the prompts to complete the installation.
 - On Windows, accept the license agreement, choose the installation path, and proceed with the default options.
 - On Linux, you can also use a package manager. For example, on Ubuntu:
-	```bash
-	sudo apt update
-	sudo apt install -y nodejs npm
-	```
-	Or on RHEL/CentOS:
-	```bash
-	sudo dnf install -y nodejs npm
-	```
+```
+curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install -y nodejs
+```
 
 **Step 4: Verify Installation**
 ```
@@ -152,7 +148,7 @@ After=network.target
 [Service]
 Type=simple
 User=ec2-user
-WorkingDirectory=/opt/Student-portal-frontend
+WorkingDirectory=/opt/Student-portal-frontend/Student-portal-frontend
 ExecStart=/usr/bin/serve -s build -l 3000
 Restart=always
 RestartSec=5
