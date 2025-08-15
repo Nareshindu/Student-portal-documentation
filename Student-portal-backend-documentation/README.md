@@ -27,33 +27,27 @@ This is the Spring Boot backend for the Student Registration Portal. It provides
 
 ---
 
-## Prerequisites
+## Step-by-Step Installation and Setup
 
-- **Java 1.8 or above**
-- **Maven 3.6+**
-- **PostgreSQL**
+### 1. Install Java 8 (OpenJDK 1.8)
 
----
-
-## Installation Steps
-
-### 1. Install Java (JDK 8+)
-
-On RHEL:
+Java is required to run the backend. On RHEL-based systems, install Java 8 using:
 ```
 sudo dnf install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
 ```
-Verify:
+**Verify the installation:**
 ```
 java -version
 ```
+You should see output showing Java 1.8 is installed.
 
-Set JAVA_HOME in `~/.bashrc` or `/etc/profile.d/java.sh`:
+**Set JAVA_HOME Environment Variable:**
+Add the following lines to your `~/.bashrc` or `/etc/profile.d/java.sh` file:
 ```
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 ```
-Reload:
+Reload the file to apply changes:
 ```
 source ~/.bashrc
 # or
@@ -62,16 +56,19 @@ source /etc/profile.d/java.sh
 
 ---
 
-### 2. Install Maven
+### 2. Install Apache Maven
 
-Manual installation:
+Maven is used to build and manage the project dependencies.
+
+**Manual Installation:**
 ```
 cd /opt
 sudo wget https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
 sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz
 sudo mv apache-maven-3.9.6 apache-maven
 ```
-Set Maven environment variables in `/etc/profile.d/maven.sh`:
+**Set Maven Environment Variables:**
+Create or edit `/etc/profile.d/maven.sh` and add:
 ```
 export M2_HOME=/opt/apache-maven
 export PATH=${M2_HOME}/bin:${PATH}
@@ -80,45 +77,71 @@ Reload:
 ```
 source /etc/profile.d/maven.sh
 ```
-Verify:
+**Verify Maven Installation:**
 ```
 mvn -version
 ```
-Or install via yum:
+You should see Maven version output.
+
+**Alternative (YUM):**
 ```
 sudo yum install maven
 ```
 
 ---
 
+### 3. Install and Configure PostgreSQL Client (Optional, for DB verification)
+
+**Install PostgreSQL client:**
+```
+sudo dnf install -y postgresql13
+```
+**Verify installation:**
+```
+psql --version
+```
+**Test DB connection:**
+```
+psql -h <db-ip> -U <username> -d <dbname>
+```
+
+---
 
 ### 4. Download and Configure the Application
 
-Clone the repository:
+**Clone the repository:**
 ```
 sudo git clone https://github.com/Nareshindu/Student-code.git /opt/Student-code
 sudo chown -R ec2-user:ec2-user /opt/Student-code
 ```
-Edit database configuration:
+
+**Edit database configuration:**
+Open the application properties file:
 ```
 sudo vi /opt/Student-code/StudentManagementSystem/src/main/resources/application.properties
 ```
-Update:
+Update the following lines with your database details:
 ```
 spring.datasource.url=jdbc:postgresql://<DB_IP>:5432/student_details
 spring.datasource.username=<username>
 spring.datasource.password=<password>
 ```
+Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL server details.
 
 ---
 
 ### 5. Build and Run the Backend
 
+Navigate to the project directory and build the application:
 ```
 cd /opt/Student-code/StudentManagementSystem
 mvn clean install
+```
+After a successful build, run the backend:
+```
 mvn spring-boot:run
 ```
+The backend will start on the default port (usually 8080).
 
 ---
 
