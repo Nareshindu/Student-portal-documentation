@@ -119,7 +119,6 @@ Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL se
 Navigate to the project directory. To ensure a clean build, delete the old `target` directory (if it exists) and then build the package:
 ```
 cd /opt/Student-portal-backend/Student-portal-backend/
-rm -rf target
 mvn clean install
 ```
 After a successful build, you can run the backend using:
