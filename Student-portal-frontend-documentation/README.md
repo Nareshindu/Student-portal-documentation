@@ -4,12 +4,13 @@ This is the React-based frontend for the Student Registration Portal. It provide
 
 ---
 
-## Technologies Used
+##  Technologies Used
 
-- **React** (with Create React App or Vite)
-- **JavaScript/TypeScript**
-- **Axios** (for API calls)
-- **Bootstrap/Material-UI** (for UI styling, if used)
+- **React** (via Create React App)
+- **JavaScript**
+- **Axios** – HTTP client for API calls
+- **Bootstrap / Material-UI** – UI Styling (optional)
+- **Node.js + npm** – Runtime and package manager
 
 ---
 
@@ -27,7 +28,7 @@ This is the React-based frontend for the Student Registration Portal. It provide
 
 ---
 
-## Step-by-Step Installation and Setup
+## Step-by-Step Installation & Deployment
 
 
 ### 1. Prerequisites
@@ -57,6 +58,11 @@ If you see version numbers, Node.js and npm are already installed. If not, follo
 curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
 sudo yum install -y nodejs
 ```
+Or for Ubuntu:
+```
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+```
 
 **Step 4: Verify Installation**
 ```
@@ -73,13 +79,15 @@ You should see version numbers for both Node.js and npm.
 
 Navigate to your desired directory and clone the repository:
 ```
-git clone https://github.com/Nareshindu/Student-portal-frontend.git
-cd Student-portal-frontend
+cd /opt
+sudo git clone https://github.com/Nareshindu/Student-portal-frontend.git
+cd /opt/Student-portal-frontend/Student-portal-frontend
+
 ```
 
 ---
 
-### 3. Install Dependencies
+### 3. Install Dependencies(When you are running npm install command you should run this command where package.json is there )
 
 Install all required npm packages:
 ```
