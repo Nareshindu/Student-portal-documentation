@@ -81,6 +81,7 @@ Navigate to your desired directory and clone the repository:
 ```
 cd /opt
 sudo git clone https://github.com/Nareshindu/Student-portal-frontend.git
+sudo chown -R ec2-user:ec2-user /opt/Student-portal-frontend
 cd /opt/Student-portal-frontend/Student-portal-frontend
 
 ```
@@ -110,16 +111,6 @@ Add the following line to the `.env` file:
 REACT_APP_API_URL=http://<backend-ip>:8080
 ```
 Replace `<backend-ip>` with your backend server's IP address or domain.
-
----
-
-### 5. Start the Development Server
-
-Run the following command to start the frontend in development mode:
-```
-npm start
-```
-The application will be available at `http://localhost:3000` by default.
 
 ---
 
