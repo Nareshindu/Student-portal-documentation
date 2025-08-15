@@ -91,22 +91,6 @@ sudo yum install maven
 
 ---
 
-### 3. Configure PostgreSQL
-
-Install PostgreSQL client:
-```
-sudo dnf install -y postgresql13
-```
-Verify:
-```
-psql --version
-```
-Test connection:
-```
-psql -h <db-ip> -U <username> -d <dbname>
-```
-
----
 
 ### 4. Download and Configure the Application
 
