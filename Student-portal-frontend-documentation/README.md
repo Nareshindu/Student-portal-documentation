@@ -29,17 +29,47 @@ This is the React-based frontend for the Student Registration Portal. It provide
 
 ## Step-by-Step Installation and Setup
 
+
 ### 1. Prerequisites
 
-- **Node.js** (v14 or above recommended)
-- **npm** (comes with Node.js)
+#### Install Node.js and npm (Step-by-Step)
 
-Check if Node.js and npm are installed:
+Node.js is required to run the frontend. npm (Node Package Manager) comes bundled with Node.js.
+
+**Step 1: Check if Node.js and npm are already installed**
 ```
 node -v
 npm -v
 ```
-If not installed, download and install from [Node.js official website](https://nodejs.org/).
+If you see version numbers, Node.js and npm are already installed. If not, follow the steps below.
+
+**Step 2: Download Node.js**
+
+- Go to the [Node.js official website](https://nodejs.org/).
+- Download the LTS (Long Term Support) version for your operating system (Windows, macOS, or Linux).
+
+**Step 3: Install Node.js**
+
+- Run the downloaded installer and follow the prompts to complete the installation.
+- On Windows, accept the license agreement, choose the installation path, and proceed with the default options.
+- On Linux, you can also use a package manager. For example, on Ubuntu:
+	```bash
+	sudo apt update
+	sudo apt install -y nodejs npm
+	```
+	Or on RHEL/CentOS:
+	```bash
+	sudo dnf install -y nodejs npm
+	```
+
+**Step 4: Verify Installation**
+```
+node -v
+npm -v
+```
+You should see version numbers for both Node.js and npm.
+
+---
 
 ---
 
