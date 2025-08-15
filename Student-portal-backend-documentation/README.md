@@ -89,36 +89,19 @@ sudo yum install maven
 ```
 
 ---
-
-### 3. Install and Configure PostgreSQL Client (Optional, for DB verification)
-
-**Install PostgreSQL client:**
-```
-sudo dnf install -y postgresql13
-```
-**Verify installation:**
-```
-psql --version
-```
-**Test DB connection:**
-```
-psql -h <db-ip> -U <username> -d <dbname>
-```
-
----
-
-### 4. Download and Configure the Application
+### 3. Download and Configure the Application
 
 **Clone the repository:**
 ```
-sudo git clone https://github.com/Nareshindu/Student-code.git /opt/Student-code
-sudo chown -R ec2-user:ec2-user /opt/Student-code
+sudo git clone https://github.com/Nareshindu/Student-portal-backend.git 
+cd /opt/Student-portal-backend
+sudo chown -R ec2-user:ec2-user /opt/Student-portal-backend
 ```
 
 **Edit database configuration:**
 Open the application properties file:
 ```
-sudo vi /opt/Student-code/StudentManagementSystem/src/main/resources/application.properties
+sudo vi /opt/Student-portal-backend/src/main/resources/application.properties
 ```
 Update the following lines with your database details:
 ```
@@ -130,11 +113,11 @@ Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL se
 
 ---
 
-### 5. Build and Run the Backend
+### 4. Build and Run the Backend
 
 Navigate to the project directory and build the application:
 ```
-cd /opt/Student-code/StudentManagementSystem
+cd /opt/Student-portal-backend/
 mvn clean install
 ```
 After a successful build, run the backend:
@@ -145,16 +128,7 @@ The backend will start on the default port (usually 8080).
 
 ---
 
-## Folder Structure
 
-- `src/main/java/com/sms/` - Main application and packages
-  - `controller/` - REST controllers
-  - `entity/` - JPA entities
-  - `repository/` - Spring Data repositories
-  - `service/` - Business logic
-- `src/main/resources/` - Application properties
-
----
 
 ## API Endpoints
 
