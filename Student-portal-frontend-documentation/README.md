@@ -119,6 +119,7 @@ The application will be available at `http://localhost:3000` by default.
 
 ---
 
+
 ### 6. Build for Production
 
 To create an optimized production build:
@@ -126,6 +127,54 @@ To create an optimized production build:
 npm run build
 ```
 The build output will be in the `build/` directory.
+
+---
+
+### 7. Serve the Production Build with a Systemd Service (Optional)
+
+To serve the frontend in production, you can use a static file server like `serve` (Node.js) or Nginx. Below is an example using the `serve` package and systemd:
+
+**Step 1: Install the serve package globally**
+```
+sudo npm install -g serve
+```
+
+**Step 2: Create a systemd service file**
+```
+sudo vi /etc/systemd/system/frontend.service
+```
+Paste the following content (update paths as needed):
+```
+[Unit]
+Description=React Frontend Service
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/Student-portal-frontend
+ExecStart=/usr/bin/serve -s build -l 3000
+Restart=always
+RestartSec=5
+SyslogIdentifier=react-frontend
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Step 3: Reload systemd and start the service**
+```
+sudo systemctl daemon-reload
+sudo systemctl enable frontend
+sudo systemctl start frontend
+```
+
+**Step 4: Check the status of the service**
+```
+sudo systemctl status frontend
+```
+
+Your frontend will now be served on port 3000 and managed by systemd.
 
 ---
 
