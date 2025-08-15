@@ -113,18 +113,116 @@ Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL se
 
 ---
 
+
 ### 4. Build and Run the Backend
 
-Navigate to the project directory and build the application:
+Navigate to the project directory. To ensure a clean build, delete the old `target` directory (if it exists) and then build the package:
 ```
 cd /opt/Student-portal-backend/
+rm -rf target
 mvn clean install
 ```
-After a successful build, run the backend:
+After a successful build, you can run the backend using:
 ```
 mvn spring-boot:run
 ```
+Or, if you want to run the packaged JAR directly (after building):
+```
+java -jar target/StudentManagementSystem-0.0.1-SNAPSHOT.jar
+```
 The backend will start on the default port (usually 8080).
+
+---
+
+### 5. Set Up as a Systemd Service (Recommended for Production)
+
+To manage the backend as a service, create a systemd service file:
+
+```
+sudo vi /etc/systemd/system/backend.service
+```
+Paste the following content:
+```
+[Unit]
+Description=Java Backend Service
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/opt/Student-portal-backend
+ExecStart=/usr/bin/java -jar /opt/Student-portal-backend/target/StudentManagementSystem-0.0.1-SNAPSHOT.jar
+Restart=always
+RestartSec=5
+SyslogIdentifier=java-backend
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Load and start the service:**
+```
+sudo systemctl daemon-reload
+sudo systemctl enable backend
+sudo systemctl start backend
+```
+
+**To check the status of the service:**
+```
+sudo systemctl status backend
+```
+
+---
+
+### 6. Access the Student Web-Application
+
+If you are using an EC2 instance, open your instance's public IP address in the browser to access the application. For example, if your public IP is `18.234.229.147`, open:
+
+```
+http://18.234.229.147:8080/
+```
+
+---
+
+### 7. Verification from Backend Server (PostgreSQL Client)
+
+You can check data using the PostgreSQL client (`psql`).
+
+**Add PostgreSQL YUM Repository:**
+This enables access to PostgreSQL versions from the official PostgreSQL repo.
+```
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+```
+
+**Disable the default PostgreSQL module:**
+Prevents RHEL from installing the default older PostgreSQL version.
+```
+sudo dnf -qy module disable postgresql
+```
+
+**Install postgresql13 Client Only:**
+Installs the psql command-line client without installing the database server.
+```
+sudo dnf install -y postgresql13
+```
+
+**Verify the client installation:**
+```
+psql --version
+```
+You should see something like:
+```
+psql (PostgreSQL) 13.x
+```
+
+**To test the remote connection from backend server:**
+```
+psql -h <ip-addr> -U <username> -d <dbname>
+```
+Example:
+```
+psql -h 172.31.45.69 -U student -d student_details
+```
 
 ---
 
