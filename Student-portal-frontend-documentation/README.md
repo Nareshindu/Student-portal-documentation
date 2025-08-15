@@ -92,9 +92,16 @@ npm install
 
 ---
 
+
 ### 4. Configure Environment Variables (Optional)
 
-If your backend API endpoint is different from the default, create a `.env` file in the project root and add:
+If your backend API endpoint is different from the default, create a `.env` file in the project root directory (the same directory as your `package.json`).
+
+**Path:**
+```
+<project-root>/.env
+```
+Add the following line to the `.env` file:
 ```
 REACT_APP_API_URL=http://<backend-ip>:8080
 ```
