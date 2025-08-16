@@ -104,9 +104,7 @@ If your backend API endpoint is different from the default, create a `.env` file
 
 **Path:**
 ```
-<project-root>/.env
-```
-Add the following line to the `.env` file:
+sudo vi /opt/Student-portal-frontend/Student-portal-frontend/src/services/StudentService.js
 ```
 REACT_APP_API_URL=http://<backend-ip>:8080
 ```

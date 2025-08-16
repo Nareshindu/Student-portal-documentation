@@ -118,8 +118,14 @@ spring.datasource.password=<password>
 Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL server details.
 
 ---
-
-
+**Edit backend code
+Change the Ip-Address in below two files(Give public-ip of frontend server IP)
+```
+sudo vi /opt/Student-portal-backend/Student-portal-backend/src/main/java/com/sms/controller/HomeController.java
+```
+```
+sudo vi /opt/Student-portal-backend/Student-portal-backend/src/main/java/com/sms/controller/StudentController.java
+```
 ### 4. Build and Run the Backend
 
 Navigate to the project directory. To ensure a clean build, delete the old `target` directory (if it exists) and then build the package:
