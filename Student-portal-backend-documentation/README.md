@@ -44,6 +44,9 @@ You should see output showing Java 1.8 is installed.
 **Set JAVA_HOME Environment Variable:**
 Add the following lines to your `~/.bashrc` or `/etc/profile.d/java.sh` file:
 ```
+sudo vi ~/.bashrc
+```
+```
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 ```
@@ -69,6 +72,9 @@ sudo mv apache-maven-3.9.6 apache-maven
 ```
 **Set Maven Environment Variables:**
 Create or edit `/etc/profile.d/maven.sh` and add:
+```
+sudo vi /etc/profile.d/maven.sh
+```
 ```
 export M2_HOME=/opt/apache-maven
 export PATH=${M2_HOME}/bin:${PATH}
