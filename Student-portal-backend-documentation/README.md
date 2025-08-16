@@ -119,7 +119,7 @@ Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL se
 
 ---
 **Edit backend code**
-Change the Ip-Address in below two files(Give public-ip of frontend server IP)
+Change the Ip-Address in below two files(Give public-ip of frontend server)
 ```
 sudo vi /opt/Student-portal-backend/Student-portal-backend/src/main/java/com/sms/controller/HomeController.java
 ```
