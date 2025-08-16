@@ -118,7 +118,7 @@ spring.datasource.password=<password>
 Replace `<DB_IP>`, `<username>`, and `<password>` with your actual PostgreSQL server details.
 
 ---
-**Edit backend code
+**Edit backend code**
 Change the Ip-Address in below two files(Give public-ip of frontend server IP)
 ```
 sudo vi /opt/Student-portal-backend/Student-portal-backend/src/main/java/com/sms/controller/HomeController.java
